@@ -1,0 +1,9 @@
+timestamp,value_1,value_2,value_3
+0,0,a,none
+1,1,aa,None
+2,2,aaa,NOne
+3,3,aaaa,NONE
+4,4,,NoNe
+5,5,aaaaaa,
+,6,aaaaaaa,NONe
+,,aaaaaaaa,nonE
