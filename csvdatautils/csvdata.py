@@ -29,7 +29,8 @@
 ###############
 
 import csv
-from typing import List, Union
+import pathlib
+from typing import Dict, List, Union
 
 from csvdatautils.csvdatarow import *
 
@@ -48,15 +49,19 @@ class CSVData():
         of accessible fields.
         
         Numeric data will be stored as floats, all other data will be stored as strings except for
-        the string 'none' (or any variation: 'None', 'NONE', etc.) which will be stored as None.
+        the strings '' and 'none' (or any variation: 'NONE', etc.) which will be stored as None.
 
         Args:
             csvfile (str): the path to the ROSData CSV file
+            mappings (bool, optional): the field/attribute mappings. Allows the retrieval of the same
+              data value via mutliple names. Format is {'mapped_name': '<field_name>'}. Defaults to {}.
         """
 
         # Class Variables
         self._data = []
         self._fields = []
+        self._mappings = mappings
+        self._chunk = None
 
         # Read CSV file
         with open(csvfile, newline='') as f:
@@ -66,11 +71,67 @@ class CSVData():
                     self._fields = row
                 else:
                     self._data.append(CSVDataRow(row, self._fields, mappings))
-            f.close()       
+            f.close()
+
+        # Reset chunk
+        self.set_chunk(reset=True)     
 
 
-    def field_exists(self, field : str) -> bool:
-        """Checks to see if a field exists within this CSV data
+    @property
+    def fields(self) -> List[str]:
+        """Gets the set of fields contained within the CSV data.
+
+        Returns:
+            List[str]: the list of fields.
+        """
+        return self._fields
+
+    @property
+    def mappings(self) -> Dict:
+        """Gets the current mappings applied to the CSV data fields.
+
+        Returns:
+            Dict: the set of mappings.
+        """
+        return self._mappings  
+    
+    @property
+    def chunk(self) -> List[CSVDataRow]:
+        """Gets the current chunk.
+
+        Returns:
+            List[CSVDataRow]: gets the current chunk.
+        """
+        return self._chunk
+
+    
+    def set_chunk(self, start: int=0, stop: int=-1, step: int=1,
+              reset: bool=False, operate_on_chunk: bool=False) -> None:
+        """Set to perform operations on a chunk within the data.
+
+        Args:
+            start (int, optional): The start index to set for the chunk. Defaults to 0.
+            stop (int, optional): The stop index to set for the chunk. Defaults to -1.
+            step (int, optional): The step value to use. Defaults to 1.
+            reset (bool, optional): Set to true to reset the chunk back to the full dataset. Defaults to False.
+            operate_on_chunk (bool, optional): perform the operation on current chunk. Defaults to False.
+        """
+
+        # Reset if required
+        if reset:
+            self._chunk = self._data
+        
+        # Operating on current chunk or complete data
+        data = self._data
+        if operate_on_chunk:
+            data = self._chunk
+
+        # Set chunk
+        self._chunk = data[start:stop:step]
+
+
+    def has_field(self, field : str) -> bool:
+        """Checks to see if a field exists within the CSV data
 
         Args:
             field (str): the field
@@ -83,27 +144,30 @@ class CSVData():
             return True
         return False
     
-    def get_row(self, index: int) -> CSVDataRow:
-        """Gets the CSVDataRow object for the provided index.
+    
+    def get_row(self, item: Union[int,slice],
+                operate_on_chunk: bool=False) -> Union[CSVDataRow, List[CSVDataRow]]:
+        """Gets a specific index, or slice, from the data.
 
         Args:
-            index (int): the index to retrieve
-
-        Raises:
-            IndexError: if the index does not exist.
+            item (Union[int,slice]): the index or slice to return
+            operate_on_chunk (bool, optional): perform the operation on current chunk. Defaults to False.
 
         Returns:
-            CSVDataRow: the returned CSVDataRow object for the passed index.
+            Union[CSVDataRow, List[CSVDataRow]]: the returned CSVDataRow object or list of CSVDataRow objects
         """
-        if index >= len(self):
-            raise IndexError(f"Attempting to access an index ({index}) that does not exist.")
-        return self._data[index]
+                
+        # Operating on current chunk or complete data
+        data = self._data
+        if operate_on_chunk:
+            data = self._chunk
+
+        return data[item]
 
     
-    def get_data(self, indices: Union[int, List[int], List[float]]=None,
-                 fields: Union[str, List[str]]=None) -> Union[float, str, List[Union[float, str]]]:
-        """Gets the entire data for a specific index or field. Can also return the value for
-        a specific field and index, or the set of values for a specific set of fields and indices.
+    def get_subset(self, indices: Union[int, List]=None,
+                 fields: Union[str, List]=None, operate_on_chunk: bool=False) -> Any:
+        """Gets a subset of the data. The subset can be a desired set of row(s) and/or field(s).
 
         Examples:
             
@@ -124,8 +188,9 @@ class CSVData():
             | data = csvrosdata_obj.get_data([0, 2], ['pos_x', 'pos_z'])  
 
         Args:
-            indices (int, str, list): the index or indices to be retrieved
-            fields (optional, int or str): the field or fields to be retrieved
+            indices (int, str, list): the index(s) to be retrieved
+            fields (optional, int or str): the field(s) to be retrieved
+            operate_on_chunk (bool, optional): perform the operation on current chunk. Defaults to False.
 
         Raises:
             ValueError: if too many arguments are provided
@@ -157,18 +222,24 @@ class CSVData():
         else:
             raise ValueError("The fields argument must be a string, or list of strings.")
 
+        # Operating on data or chunk
+        data = self._data
+        if operate_on_chunk:
+            data = self._chunk
+
+        # Get values
         if len(indices) != 0 and len(fields) != 0:
             retval = []
             for x in indices:
                 if len(fields) == 1:
-                    retval.append(getattr(self._data[x], fields[0]))
+                    retval.append(getattr(data[x], fields[0]))
                 else:
-                    retval.append([getattr(self._data[x], y) for y in fields])
+                    retval.append([getattr(data[x], y) for y in fields])
         elif len(indices) != 0:
-            retval = [self._data[x] for x in indices]
+            retval = [data[x] for x in indices]
         elif len(fields) != 0:
             retval = []
-            for x in self._data:
+            for x in data:
                 if len(fields) == 1:
                     retval.append(getattr(x, fields[0]))
                 else:
@@ -188,29 +259,46 @@ class CSVData():
             reverse (bool, optional): Set to true to reverse the order. Defaults to True.
         """
         self._data.sort(key=lambda x: getattr(x, field), reverse=reverse)
-        
 
 
-    def __getitem__(self, index: int) -> CSVDataRow:
-        """Can be used as a shorthand for the get_row method. 
-        
-        Examples:
+    def save(self, fp: pathlib.Path, operate_on_chunk: bool = False) -> None:
+        """Save the CSVData to a CSV file.
 
-            | # equivalent to csvrosdata_obj.get_data(indices=0)
-            | csvrosdata_obj[0] 
-
-            | # equivalent to csvrosdata_obj.get_data(fields='timestamp')
-            | csvrosdata_obj['timestamp'] 
-
-            | # equivalent to csvrosdata_obj.get_data(indices=0, fields='timestamp')
-            | csvrosdata_obj[0, 'timestamp'] 
+        Args:
+            fp (pathlib.Path): the location to save the file.
+            operate_on_chunk (bool, optional): perform the operation on current chunk. Defaults to False.
         """
 
-        return self.get_row(index)
+        # Operating on current chunk or complete data
+        data = self._data
+        if operate_on_chunk:
+            data = self._chunk
+
+        # Open csv file, write header, than data
+        with open(str(fp), 'w', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=self._fields)
+            writer.writeheader()
+            writer.writerows([x.data() for x in data])
+
+
+    def __getitem__(self, item: Union[int,slice]) -> Union[CSVDataRow, List[CSVDataRow]]:
+        """Gets a specific index, or slice, from the data. Operates on the entire data only,
+        not on the current chunk (if set). Use the 'get_row' function if you wish to operate
+        on the current chunk.
+
+        Args:
+            item (Union[int,slice]): the index or slice to return
+
+        Returns:
+            Union[CSVDataRow, List[CSVDataRow]]: the returned CSVDataRow object or list of CSVDataRow objects
+        """
+        
+        return self.get_row(item, operate_on_chunk=False)
 
 
     def __len__(self) -> int:
-        """returns the length of the data
+        """returns the length of the data. Operates on the entire data only,
+        not on the current chunk (if set).
 
         Returns:
             int: the length of the data

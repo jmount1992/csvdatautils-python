@@ -1,6 +1,6 @@
 timestamp,value_1,value_2,value_3
 0,0,a,none
-1,1,aa,None
+1,1,aa,
 2,2,aaa,NOne
 3,3,aaaa,NONE
 4,4,,NoNe

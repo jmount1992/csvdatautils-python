@@ -1,0 +1,79 @@
+# Modified from https://github.com/epassaro/cache-conda-envs
+name: documentation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+  pull_request:
+    branches:
+      - 'main'
+
+env:
+  CACHE_NUMBER: 0  # increase to reset cache manually
+
+jobs:
+  build:
+    # Build and cache conda environment
+    # Run unit tests using pytest
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Mambaforge
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+            miniforge-variant: Mambaforge
+            miniforge-version: latest
+            activate-environment: robotools
+            use-mamba: true
+
+      - name: Set cache date
+        run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        with:
+          path: /usr/share/miniconda3/envs/robotools
+          key: linux-64-conda-${{ hashFiles('environment.yml') }}-${{ env.DATE }}-${{ env.CACHE_NUMBER }}
+        id: cache
+
+      - name: Update environment
+        run: mamba env update -n csvdatautils -f environment.yml
+        if: steps.cache.outputs.cache-hit != 'true'
+
+      - name: Install CSV Data Utils
+        shell: bash -l {0}
+        run: pip install -e .
+
+      - name: Build Sphinx Documentation
+        shell: bash -l {0}
+        run: cd docs && make html
+
+      # Create an artifact of the html output.
+      - uses: actions/upload-artifact@v1
+        with:
+          name: DocumentationHTML
+          path: docs/build/html/
+
+      # Publish built docs to gh-pages branch
+      - name: Commit documentation changes
+        run: |
+          git clone https://github.com/jmount1992/csvdatautils-python.git --branch gh-pages --single-branch gh-pages
+          cp -r docs/build/html/* gh-pages/
+          cd gh-pages
+          touch .nojekyll
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update documentation" -a || true
+         # The above command will fail if no changes were present, so we ignore that.
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}

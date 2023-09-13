@@ -28,8 +28,7 @@
 ### MODULES ###
 ###############
 
-import csv
-from typing import Any, Tuple
+from typing import Any, Dict, List, Tuple
 
 ###############
 ### CLASSES ###
@@ -46,7 +45,7 @@ class CSVDataRow():
         class attributes. The mappings argument allows getting of an attribute via multiple names.
         
         Numeric data will be stored as floats, all other data will be stored as strings except for
-        the string 'none' (or any variation: 'None', 'NONE', etc.) which will be stored as None.
+        the strings '' and 'none' (or any variation: 'NONE', etc.) which will be stored as None.
 
         Args:
             data (list): the values for the provided fields
@@ -63,7 +62,6 @@ class CSVDataRow():
         
         # Check fields and data are same length
         if len(fields) != len(data):
-            print(fields, data)
             raise ValueError("The number of fields must be equal to size of the data")
 
         # Attempt to convert data to float
@@ -73,7 +71,7 @@ class CSVDataRow():
                 # attempt to convert to float
                 val = float(val)
             except ValueError:
-                if val.lower() == 'none':
+                if val.lower() == 'none' or val == '':
                     # if was the string none, then convert to None type
                     val = None
             
@@ -84,6 +82,18 @@ class CSVDataRow():
         for idx, field in enumerate(fields):
             setattr(self, field, data[idx])
 
+
+    @property
+    def fields(self) -> List:
+        return self._fields
+
+    @property
+    def mappings(self) -> Dict:
+        return self._mappings 
+    
+    
+    def data(self) -> Dict:
+        return {x: getattr(self, x) for x in self._fields}
 
     def __getattr__(self, __name: str) -> Any:
         return getattr(self, self._mappings[__name])
