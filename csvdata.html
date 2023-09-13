@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSVData Module &mdash; csvdatautils-python 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CSVDataRow Module" href="csvdatarow.html" />
+    <link rel="prev" title="Welcome to the CSV Data Utils Documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> csvdatautils-python
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CSVData Module</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="csvdatarow.html">CSVDataRow Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">csvdatautils-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">CSVData Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/csvdata.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="csvdata-module">
+<h1>CSVData Module<a class="headerlink" href="#csvdata-module" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-csvdatautils.csvdata"></span><dl class="py class">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">csvdatautils.csvdata.</span></span><span class="sig-name descname"><span class="pre">CSVData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csvfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mappings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData" title="Permalink to this definition"></a></dt>
+<dd><p>A utility class to provide easy accessibility to data stored within CSV, or CSV-like, files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csvfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mappings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initialises a CSVData object. The CSV file should contain headers in the first row.
+All other rows are considered data. The headers within the CSV file will become the set
+of accessible fields.</p>
+<p>Numeric data will be stored as floats, all other data will be stored as strings except for
+the strings ‘’ and ‘none’ (or any variation: ‘NONE’, etc.) which will be stored as None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>csvfile</strong> (<em>str</em>) – the path to the ROSData CSV file</p></li>
+<li><p><strong>mappings</strong> (<em>bool</em><em>, </em><em>optional</em>) – the field/attribute mappings. Allows the retrieval of the same
+data value via mutliple names. Format is {‘mapped_name’: ‘&lt;field_name&gt;’}. Defaults to {}.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.chunk">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">chunk</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="csvdatarow.html#csvdatautils.csvdatarow.CSVDataRow" title="csvdatautils.csvdatarow.CSVDataRow"><span class="pre">csvdatautils.csvdatarow.CSVDataRow</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#csvdatautils.csvdata.CSVData.chunk" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the current chunk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>gets the current chunk.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="csvdatarow.html#csvdatautils.csvdatarow.CSVDataRow" title="csvdatautils.csvdatarow.CSVDataRow">CSVDataRow</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.fields">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#csvdatautils.csvdata.CSVData.fields" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the set of fields contained within the CSV data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of fields.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.get_row">
+<span class="sig-name descname"><span class="pre">get_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">slice</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operate_on_chunk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="csvdatarow.html#csvdatautils.csvdatarow.CSVDataRow" title="csvdatautils.csvdatarow.CSVDataRow"><span class="pre">csvdatautils.csvdatarow.CSVDataRow</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="csvdatarow.html#csvdatautils.csvdatarow.CSVDataRow" title="csvdatautils.csvdatarow.CSVDataRow"><span class="pre">csvdatautils.csvdatarow.CSVDataRow</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.get_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.get_row" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a specific index, or slice, from the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>Union</em><em>[</em><em>int</em><em>,</em><em>slice</em><em>]</em>) – the index or slice to return</p></li>
+<li><p><strong>operate_on_chunk</strong> (<em>bool</em><em>, </em><em>optional</em>) – perform the operation on current chunk. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the returned CSVDataRow object or list of CSVDataRow objects</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Union[<a class="reference internal" href="csvdatarow.html#csvdatautils.csvdatarow.CSVDataRow" title="csvdatautils.csvdatarow.CSVDataRow">CSVDataRow</a>, List[<a class="reference internal" href="csvdatarow.html#csvdatautils.csvdatarow.CSVDataRow" title="csvdatautils.csvdatarow.CSVDataRow">CSVDataRow</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.get_subset">
+<span class="sig-name descname"><span class="pre">get_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operate_on_chunk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.get_subset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.get_subset" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a subset of the data. The subset can be a desired set of row(s) and/or field(s).</p>
+<p class="rubric">Examples</p>
+<div class="line-block">
+<div class="line"># return data for index 0</div>
+<div class="line">data = csvrosdata_obj.get_data(0)</div>
+</div>
+<div class="line-block">
+<div class="line"># return all pos_x data</div>
+<div class="line">data = csvrosdata_obj.get_data(‘pos_x’)</div>
+</div>
+<div class="line-block">
+<div class="line"># return all fields for multiple indices</div>
+<div class="line">data = csvrosdata_obj.get_data([0, 2])</div>
+</div>
+<div class="line-block">
+<div class="line"># return all data for a set of fields</div>
+<div class="line">data = csvrosdata_obj.get_data([‘pos_x’, ‘pos_z’])</div>
+</div>
+<div class="line-block">
+<div class="line"># return multiple fields for a specified index or a set of indices</div>
+<div class="line">data = csvrosdata_obj.get_data(0, [‘pos_x’, ‘pos_z’])</div>
+<div class="line">data = csvrosdata_obj.get_data([0, 2], [‘pos_x’, ‘pos_z’])</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices</strong> (<em>int</em><em>, </em><em>str</em><em>, </em><em>list</em>) – the index(s) to be retrieved</p></li>
+<li><p><strong>fields</strong> (<em>optional</em><em>, </em><em>int</em><em> or </em><em>str</em>) – the field(s) to be retrieved</p></li>
+<li><p><strong>operate_on_chunk</strong> (<em>bool</em><em>, </em><em>optional</em>) – perform the operation on current chunk. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if too many arguments are provided</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>either the data (list) for a given index, the value for a given index/field or the data (list) for a field across all indices.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.has_field">
+<span class="sig-name descname"><span class="pre">has_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.has_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.has_field" title="Permalink to this definition"></a></dt>
+<dd><p>Checks to see if a field exists within the CSV data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>field</strong> (<em>str</em>) – the field</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the field exists</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.mappings">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mappings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span></em><a class="headerlink" href="#csvdatautils.csvdata.CSVData.mappings" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the current mappings applied to the CSV data fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the set of mappings.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operate_on_chunk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.save" title="Permalink to this definition"></a></dt>
+<dd><p>Save the CSVData to a CSV file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fp</strong> (<em>pathlib.Path</em>) – the location to save the file.</p></li>
+<li><p><strong>operate_on_chunk</strong> (<em>bool</em><em>, </em><em>optional</em>) – perform the operation on current chunk. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.set_chunk">
+<span class="sig-name descname"><span class="pre">set_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operate_on_chunk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.set_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.set_chunk" title="Permalink to this definition"></a></dt>
+<dd><p>Set to perform operations on a chunk within the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>int</em><em>, </em><em>optional</em>) – The start index to set for the chunk. Defaults to 0.</p></li>
+<li><p><strong>stop</strong> (<em>int</em><em>, </em><em>optional</em>) – The stop index to set for the chunk. Defaults to -1.</p></li>
+<li><p><strong>step</strong> (<em>int</em><em>, </em><em>optional</em>) – The step value to use. Defaults to 1.</p></li>
+<li><p><strong>reset</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set to true to reset the chunk back to the full dataset. Defaults to False.</p></li>
+<li><p><strong>operate_on_chunk</strong> (<em>bool</em><em>, </em><em>optional</em>) – perform the operation on current chunk. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="csvdatautils.csvdata.CSVData.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/csvdatautils/csvdata.html#CSVData.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#csvdatautils.csvdata.CSVData.sort" title="Permalink to this definition"></a></dt>
+<dd><p>Sorts the data given a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> (<em>str</em>) – the field to use to sort the data.</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em><em>, </em><em>optional</em>) – Set to true to reverse the order. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to the CSV Data Utils Documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="csvdatarow.html" class="btn btn-neutral float-right" title="CSVDataRow Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Mount.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
