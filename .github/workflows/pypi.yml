@@ -81,4 +81,5 @@ jobs:
       # Upload to GitHub Release using the `gh` CLI.
       # `dist/` contains the built packages, and the
       # sigstore-produced signatures and certificates.
-      run: gh release upload '${{ github.ref_name }}' dist/** --repo '${{ github.repository }}'
+      # run: gh release upload '${{ github.ref_name }}' dist/** --repo '${{ github.repository }}'
+      run: gh release upload 'v0.0.1' **/dist/** --repo '${{ github.repository }}'
